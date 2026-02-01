@@ -1,3 +1,16 @@
-/Titanic-Dataset.csv
-venv
-model
+# System files
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Data and Models (Tracked by DVC)
+data/
+model/
+!*.dvc
+
+# MLflow
+mlruns/
+metrics.json
