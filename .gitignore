@@ -8,6 +8,7 @@ venv/
 
 # Data and Models (Tracked by DVC)
 data/
+!data/Titanic-Dataset.csv
 model/
 !*.dvc
 
