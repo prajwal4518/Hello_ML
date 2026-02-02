@@ -70,11 +70,12 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Lowercase Repository Name
-      run: echo "REPO_LC=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+      id: repo_name
+      run: echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> $GITHUB_OUTPUT
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ env.REPO_LC }}:latest
+        tags: ghcr.io/${{ steps.repo_name.outputs.REPO_LC }}:latest
