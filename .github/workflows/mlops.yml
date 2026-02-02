@@ -37,6 +37,12 @@ jobs:
           echo "Accuracy is below 75%. Failing job."
           exit 1
         fi
+        
+    - name: Upload Model Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: trained-model
+        path: model/
 
   build-and-push:
     needs: train-and-evaluate
@@ -45,6 +51,12 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+    
+    - name: Download Model Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: trained-model
+        path: model/
     
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v3
