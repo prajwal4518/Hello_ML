@@ -74,4 +74,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ steps.repo_name.outputs.REPO_LC }}/hello_ml:latest
+        tags: ghcr.io/${{ env.REPO_LC }}:latest
